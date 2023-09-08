@@ -1,0 +1,462 @@
+[
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_loadericon.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_loadericon.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_drkcircle.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_drkcircle.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_expand.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_expand.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_6.jpg.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_6.jpg"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "com.painscore.app-main-40:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_topvignette.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_topvignette.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xxxhdpi_node_modules_reactnativecalendars_src_img_up.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xxxhdpi/node_modules_reactnativecalendars_src_img_up.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_recorderdelete.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_recorderdelete.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_play.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_play.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_audiopause.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_audiopause.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_home.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_home.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_book_online.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_book_online.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_topvignette.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_topvignette.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xxhdpi_node_modules_reactnativecalendars_src_calendar_img_next.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xxhdpi/node_modules_reactnativecalendars_src_calendar_img_next.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "com.painscore.app-main-40:/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xxhdpi_node_modules_reactnativecalendars_src_img_down.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xxhdpi/node_modules_reactnativecalendars_src_img_down.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_thumb.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_thumb.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_erroricon.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_erroricon.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_shrink.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_shrink.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xhdpi_node_modules_reactnavigation_drawer_src_views_assets_toggledrawericon.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xhdpi/node_modules_reactnavigation_drawer_src_views_assets_toggledrawericon.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "com.painscore.app-main-40:/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_node_modules_reactnavigation_elements_src_assets_backiconmask.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/node_modules_reactnavigation_elements_src_assets_backiconmask.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xxxhdpi_node_modules_reactnavigation_elements_src_assets_backicon.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xxxhdpi/node_modules_reactnavigation_elements_src_assets_backicon.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable_rn_edit_text_material.xml.flat",
+        "source": "com.painscore.app-main-40:/drawable/rn_edit_text_material.xml"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_recordingdelete.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_recordingdelete.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xhdpi_node_modules_reactnativecalendars_src_calendar_img_previous.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xhdpi/node_modules_reactnativecalendars_src_calendar_img_previous.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-hdpi_node_modules_reactnativecalendars_src_calendar_img_next.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-hdpi/node_modules_reactnativecalendars_src_calendar_img_next.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-hdpi_node_modules_reactnativecalendars_src_img_up.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-hdpi/node_modules_reactnativecalendars_src_img_up.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_phone.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_phone.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_volume.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_volume.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xxxhdpi_node_modules_reactnativecalendars_src_calendar_img_next.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xxxhdpi/node_modules_reactnativecalendars_src_calendar_img_next.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_pause.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_pause.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_videos_thumbnail.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_videos_thumbnail.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_inpatientnew.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_inpatientnew.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_vector3.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_vector3.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-hdpi_node_modules_reactnavigation_elements_src_assets_backicon.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-hdpi/node_modules_reactnavigation_elements_src_assets_backicon.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.painscore.app-main-40:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_dash.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_dash.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_node_modules_reactnativecalendars_src_img_up.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/node_modules_reactnativecalendars_src_img_up.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_8.jpg.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_8.jpg"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_newlogo.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_newlogo.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_pause.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_pause.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_bottomvignette.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_bottomvignette.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_expand.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_expand.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_recorderrecord.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_recorderrecord.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_medicines.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_medicines.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "com.painscore.app-main-40:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_shrink.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_shrink.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_back.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_back.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_callcircle.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_callcircle.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-hdpi_node_modules_reactnativecalendars_src_calendar_img_previous.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-hdpi/node_modules_reactnativecalendars_src_calendar_img_previous.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_2.jpg.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_2.jpg"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_shrink.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_shrink.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_outpatientnew.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_outpatientnew.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_book.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_book.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_account_circle.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_account_circle.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xxhdpi_node_modules_reactnativecalendars_src_calendar_img_previous.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xxhdpi/node_modules_reactnativecalendars_src_calendar_img_previous.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_10.jpg.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_10.jpg"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_back.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_back.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_expand.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_expand.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xhdpi_node_modules_reactnativecalendars_src_img_up.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xhdpi/node_modules_reactnativecalendars_src_img_up.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.painscore.app-main-40:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_logo.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_logo.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_vector2.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_vector2.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_node_modules_reactnavigation_drawer_src_views_assets_toggledrawericon.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/node_modules_reactnavigation_drawer_src_views_assets_toggledrawericon.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_recorderplay.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_recorderplay.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xxxhdpi_node_modules_reactnavigation_drawer_src_views_assets_toggledrawericon.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xxxhdpi/node_modules_reactnavigation_drawer_src_views_assets_toggledrawericon.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_pause.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_pause.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xxhdpi_node_modules_reactnavigation_elements_src_assets_backicon.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xxhdpi/node_modules_reactnavigation_elements_src_assets_backicon.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_tick.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_tick.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_profile.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_profile.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_recordingprogress.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_recordingprogress.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_call.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_call.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_recorder.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_recorder.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_arrow.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_arrow.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.painscore.app-main-40:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-hdpi_node_modules_reactnativecalendars_src_img_down.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-hdpi/node_modules_reactnativecalendars_src_img_down.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_loadericon.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_loadericon.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xxxhdpi_node_modules_reactnativecalendars_src_calendar_img_previous.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xxxhdpi/node_modules_reactnativecalendars_src_calendar_img_previous.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/raw_assets_videos_doctorvideo.mp4.flat",
+        "source": "com.painscore.app-main-40:/raw/assets_videos_doctorvideo.mp4"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.painscore.app-main-40:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_recorderstop.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_recorderstop.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_vector1.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_vector1.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_erroricon.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_erroricon.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_menu.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_menu.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_4.jpg.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_4.jpg"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_graylogo.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_graylogo.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xhdpi_node_modules_reactnativecalendars_src_img_down.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xhdpi/node_modules_reactnativecalendars_src_img_down.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xxhdpi_node_modules_reactnativecalendars_src_img_up.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xxhdpi/node_modules_reactnativecalendars_src_img_up.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_circle.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_circle.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_loadericon.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_loadericon.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_bottomvignette.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_bottomvignette.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_node_modules_reactnativevideocontrols_assets_img_play.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/node_modules_reactnativevideocontrols_assets_img_play.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_topvignette.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_topvignette.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_back.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_back.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_node_modules_reactnavigation_elements_src_assets_backicon.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/node_modules_reactnavigation_elements_src_assets_backicon.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_audioplay.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_audioplay.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_erroricon.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_erroricon.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_medical_services.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_medical_services.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.painscore.app-main-40:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_tickcircle.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_tickcircle.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xhdpi_node_modules_reactnativecalendars_src_calendar_img_next.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xhdpi/node_modules_reactnativecalendars_src_calendar_img_next.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_play.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_play.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xxhdpi_node_modules_reactnativevideocontrols_assets_img_volume.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xxhdpi/node_modules_reactnativevideocontrols_assets_img_volume.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_bottomvignette.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_bottomvignette.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xxhdpi_node_modules_reactnavigation_drawer_src_views_assets_toggledrawericon.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xxhdpi/node_modules_reactnavigation_drawer_src_views_assets_toggledrawericon.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xxxhdpi_node_modules_reactnativecalendars_src_img_down.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xxxhdpi/node_modules_reactnativecalendars_src_img_down.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_tabscreen_account_circle.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_tabscreen_account_circle.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-hdpi_node_modules_reactnavigation_drawer_src_views_assets_toggledrawericon.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-hdpi/node_modules_reactnavigation_drawer_src_views_assets_toggledrawericon.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_node_modules_reactnativecalendars_src_img_down.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/node_modules_reactnativecalendars_src_img_down.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "com.painscore.app-main-40:/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-mdpi_assets_images_gallery.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-mdpi/assets_images_gallery.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_volume.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_volume.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xhdpi_node_modules_reactnavigation_elements_src_assets_backicon.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xhdpi/node_modules_reactnavigation_elements_src_assets_backicon.png"
+    },
+    {
+        "merged": "com.painscore.app-merged_res-38:/drawable-xhdpi_node_modules_reactnativevideocontrols_assets_img_back.png.flat",
+        "source": "com.painscore.app-main-40:/drawable-xhdpi/node_modules_reactnativevideocontrols_assets_img_back.png"
+    }
+]
