@@ -11,6 +11,8 @@ import { Slider } from "@miblanchard/react-native-slider";
 import { SuccessModal } from "../../Components/SuccessModal";
 import LinearGradient from "react-native-linear-gradient";
 import { useFocusEffect } from "@react-navigation/native";
+import Video from "react-native-video";
+import { CheckBox } from "react-native-elements";
 //import { SafeAreaView } from "react-native-safe-area-context";
 import {
   StyleSheet,
@@ -35,11 +37,12 @@ const videoWidth = width * 0.7;
 const videoHeight = videoWidth * (9 / 16);
 
 const images = [
-  require("../../assets/images/2.jpg"),
-  require("../../assets/images/4.jpg"),
-  require("../../assets/images/6.jpg"),
-  require("../../assets/images/8.jpg"),
-  require("../../assets/images/10.jpg"),
+  require("../../assets/images/2.png"),
+  require("../../assets/images/4.png"),
+  require("../../assets/images/6.png"),
+  require("../../assets/images/8.png"),
+  require("../../assets/images/10.png"),
+  require("../../assets/images/12.png"),
 ];
 
 const videos = [
@@ -65,17 +68,17 @@ const numberData = [
 ];
 
 const massages = [
-  "We are happy to know your Pain free status.",
-  "It helps us to serve you in a better way.",
-  "It helps us improving pain free treatment.",
-  "Such Discomfort is expected after surgery. If you feel more discomfort or Pain, feel free to contact us anytime.",
-  "Such Discomfort is expected after surgery. If you feel more discomfort or Pain, feel free to contact us anytime.",
-  "Such Pain is expected after surgery. Feel free to contact us or update Pain Score if you feel more discomfort or Pain.",
-  "Such Pain is expected after surgery. Feel free to contact us or update Pain Score if you feel more discomfort or Pain.",
-  "You will receive a call from our doctors shortly, Please call our team if you don't get a callback in sometime.",
-  "You will receive a call from our doctors shortly, Please call our team if you don't get a callback in sometime.",
-  "You will receive a call from our doctors shortly, Please call our team if you don't get a callback in sometime.",
-  "You will receive a call from our doctors shortly, Please call our team if you don't get a callback in sometime.",
+  "A smooth road to recovery is indeed a joyride.",
+  "Some pain/discomfort is expected. Please continue medication given at the time of discharge.",
+  "Some pain/discomfort is expected. Please continue medication given at the time of discharge.",
+  "Your ride seems a little bumpy. Hang in there and take the medication prescribed at the time of discharge.",
+  "Your ride seems a little bumpy. Hang in there and take the medication prescribed at the time of discharge.",
+  "An assistant doctor will call you shortly. If you don't receive a call within 30min, please call on our 24*7 helpline.",
+  "An assistant doctor will call you shortly. If you don't receive a call within 30min, please call on our 24*7 helpline.",
+  "An assistant doctor will call you right away. Please come to the clinic for assessment and pain management.",
+  "An assistant doctor will call you right away. Please come to the clinic for assessment and pain management.",
+  "An assistant doctor will call you right away. Please come to the clinic right away for assessment and pain management.",
+  "An assistant doctor will call you right away. Please come to the clinic right away for assessment and pain management.",
 ];
 const windowWidth = Dimensions.get("window");
 const videoW = 300; // assume the video has a width of 640
@@ -85,11 +88,10 @@ const aspectRatio = videoW / videoH;
 export default Example = () => {
   const navigator = useNavigation();
   const [surgery, setSurgery] = useState("Piles");
-  const [activeIndex, setActiveIndex] = useState(0);
 
   const renderNumber = ({ item }) => (
-    <View style={{ padding: 11 }}>
-      <Text style={{ fontSize: 18, color: "#C5C5C5" }}>{item.key}</Text>
+    <View style={{ justifyContent: "space-between", paddingVertical: 5 }}>
+      <Text style={{ fontSize: 15, color: "#999" }}>{item.key}</Text>
     </View>
   );
   // Function renderItem is used to render the YouTube videos, which displays carousal for youtube videos.
@@ -114,23 +116,25 @@ export default Example = () => {
   const [whatsAppNumberApp, setWhatsAppNumberApp] = useState("");
   const [whatsAppNumberOrederMed, setWhatsAppNumberOrederMed] = useState("");
 
-  const [patientPain, setPaitentPain] = useState(3);
-  const [image, setImage] = useState(4);
-  const [painValue, setPainValue] = useState(4);
+  const [patientPain, setPaitentPain] = useState(1);
+  const [image, setImage] = useState(1);
+  const [painValue, setPainValue] = useState(2);
   const [sliderValue, setSliderValue] = useState();
   const [patientObj, setPatientObj] = useState({});
 
-  const [nausea, setNausea] = useState(false);
-  const [vomitting, setVomitting] = useState(false);
-  const [hyperAcidity, setHyperAcidity] = useState(false);
   const [bleeding, setBleeding] = useState(false);
+  const [fever, setFever] = useState(false);
+  const [headache, setHeadache] = useState(false);
+  const [urination, setUrination] = useState(false);
 
   const [videoLoading, setVideoLoading] = useState(false);
   const [today, setToday] = useState(1);
-  const [todaysUrl, setTodaysUrl] = useState(
-    "https://www.youtube.com/embed/K-Sp2eRSH48"
-  );
+  const [todaysUrl, setTodaysUrl] = useState();
+  const [todaysThumbnail, setTodaysThumbnail] = useState();
   const [isSuccessModalVisible, setIsSuccessModalVisible] = useState(false);
+
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [selectedOptions, setSelectedOptions] = useState([]);
   // ===================== Handling Success Modals =====================
   const handleSuccessSubmit = () => {
     // Submit form logic goes here
@@ -138,9 +142,9 @@ export default Example = () => {
   };
 
   const handleCloseSuccessModal = () => {
-    setNausea(false);
-    setVomitting(false);
-    setHyperAcidity(false);
+    setUrination(false);
+    setHeadache(false);
+    setFever(false);
     setBleeding(false);
     setIsSuccessModalVisible(false);
   };
@@ -148,41 +152,30 @@ export default Example = () => {
   // ===================== Used to set the Pain Value. =====================
   const handlePainValue = (value) => {
     console.log("Slider value: ", parseInt(value));
+
     setSliderValue(parseInt(value));
     setPaitentPain(value);
-    setPainValue(
-      Math.floor(
-        parseInt(value) % 2 == 0 ? parseInt(value) : parseInt(value) + 1
-      )
-    );
-    setPatientObj({
-      painValue: painValue,
-      time: new Date().toLocaleTimeString(),
-    });
-    console.log(painValue);
-    console.log(patientObj);
+    setPainValue(Math.floor(value));
   };
 
   // ===================== Used to display the Slider Thumb Image. =====================
   const handleSettingImage = (value) => {
-    setImage(parseInt(value) % 2 == 0 ? parseInt(value) : parseInt(value) + 1);
+    setImage(parseInt(value) % 2 === 0 ? parseInt(value) : parseInt(value) + 1);
   };
 
   // ===================== Handling 4 Symptoms (Nauseaa, Vomitting, Bleeding, Hyper Acidity) =====================
-  const handleClickNausea = () => {
-    setNausea(!nausea);
-  };
-
-  const handleClickVomitting = () => {
-    setVomitting(!vomitting);
-  };
-
-  const handleClickHyperAcidity = () => {
-    setHyperAcidity(!hyperAcidity);
-  };
 
   const handleClickBleeding = () => {
     setBleeding(!bleeding);
+  };
+  const handleClickUrination = () => {
+    setUrination(!urination);
+  };
+  const handleClickHeadache = () => {
+    setHeadache(!headache);
+  };
+  const handleClickFever = () => {
+    setFever(!fever);
   };
 
   // ======================== POST SURGERY INSTRUCTION ======================
@@ -229,15 +222,15 @@ export default Example = () => {
       var lastestTimeStamp = 0;
       // If the patientPain array is empty, then initiate it with first new map having two values painNumber and timeStamp.
       if (userData.painArray && userData.painArray.length > 0) {
-        userData.painArray.push(parseInt(painValue));
+        userData.painArray.push(parseInt(sliderValue));
       } else {
         userData.painArray = [];
-        userData.painArray.push(parseInt(painValue));
+        userData.painArray.push(parseInt(sliderValue));
       }
 
       if (userData.patientPain && userData.patientPain.length > 0) {
-        userData.symptoms = { nausea, bleeding, hyperAcidity, vomitting };
-        userData.latestPainFromPatient = parseInt(painValue);
+        userData.symptoms = { urination, bleeding, fever, headache };
+        userData.latestPainFromPatient = parseInt(sliderValue);
         userData.lastUpdateFromPatient = new Date().getTime();
 
         // lastestTimeStamp = userData.latestUpdateFromPatient;
@@ -249,10 +242,10 @@ export default Example = () => {
       // Else, Update the patientPain array with by appending new map.
       else {
         userData.patientPain = [];
-        userData.latestPainFromPatient = parseInt(painValue);
+        userData.latestPainFromPatient = parseInt(sliderValue);
         userData.lastUpdateFromPatient = new Date().getTime();
         // lastestTimeStamp = userData.lastUpdateFromPatient;
-        userData.symptoms = { nausea, bleeding, hyperAcidity, vomitting };
+        userData.symptoms = { urination, bleeding, fever, headache };
 
         userData.patientPain.push({
           painNumber: userData.latestPainFromPatient,
@@ -452,13 +445,47 @@ export default Example = () => {
       setVideoLoading(true);
       console.log("HELLO");
       var videoDay = 1;
-
-      if (today % 7 == 0) {
+      /*if (today % 7 == 0) {
         videoDay = 7;
       } else {
         videoDay = parseInt(today % 7);
       }
-      console.log("Day: ", videoDay);
+      console.log("Day: ", videoDay);*/
+
+      if (surgery == "Fistula") {
+        if (today < 3) {
+          videoDay = 1;
+        } else {
+          if (today < 15) {
+            videoDay = 2;
+          } else {
+            videoDay = 3;
+          }
+        }
+      } else {
+        if (surgery == "Piles") {
+          if (today < 3) {
+            videoDay = 1;
+          } else {
+            videoDay = 2;
+          }
+        } else {
+          if (surgery == "Hernia") {
+            if (today < 3) {
+              videoDay = 1;
+            } else {
+              videoDay = 2;
+            }
+          } else {
+            surgery = "Piles";
+            if (today < 3) {
+              videoDay = 1;
+            } else {
+              videoDay = 2;
+            }
+          }
+        }
+      }
 
       // Fetching Storage bucket videos according to the surgery value given for patient diagnosis.
       const storage = firebase.storage();
@@ -468,10 +495,22 @@ export default Example = () => {
         .child(`${surgery}/day${videoDay}Url.mp4`)
         .getDownloadURL()
         .then((url) => {
-          setTodaysUrl(url);
-        });
+          setTodaysUrl(() => url);
 
-      setVideoLoading(false);
+          console.log(url);
+        })
+        .then(() => {
+          setVideoLoading(false);
+        });
+      // storage
+      //   .ref()
+      //   //.child(`Sample/day1Url.mp4`)
+      //   .child(`${surgery}/day${videoDay}Url.png`)
+      //   .getDownloadURL()
+      //   .then((url) => {
+      //     setTodaysThumbnail(url);
+      //     //console.log(url);
+      //   });
     } else {
       console.log("User Data not present");
     }
@@ -486,7 +525,7 @@ export default Example = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
       <Header />
-      <ScrollView overScrollMode="never">
+      <ScrollView overScrollMode="never" nestedScrollEnabled={true}>
         <View style={styles.container}>
           {/*} <Text
             style={{
@@ -501,42 +540,50 @@ export default Example = () => {
           </Text>*/}
 
           {/* Rendering Youtube Video */}
-          {videoLoading ? (
-            <ActivityIndicator
-              style={styles.indicator}
-              color="#1b6844"
-              size="large"
-            />
-          ) : (
-            <View
-              style={{
-                flex: 1,
-                width: 343, //"70%"
-                height: 193, //415,
-                overflow: "hidden",
-                borderRadius: 5,
-                marginTop: 2,
-              }}
-            >
-              <WebView
-                source={{ uri: todaysUrl }}
-                mediaPlaybackRequiresUserAction={true}
-                style={{ width: 343, height: 193, opacity: 0.99 }}
-                //androidHardwareAccelerationDisabled= {true}
-                javaScriptEnabled={true}
-                allowsFullscreenVideo={true}
-              />
-            </View>
-          )}
-          <Text
+          <View
             style={{
-              fontSize: 23,
-              fontWeight: 400,
-              margin: 10,
-              color: "#000000",
+              position: "relative",
+              flex: 1,
+              width: "70%", //343,
+              height: 415, //193,
+              overflow: "hidden",
+              borderRadius: 5,
+              borderWidth: 1,
+              marginTop: 2,
             }}
           >
-            How is your pain on Day {today} ?
+            {videoLoading ? (
+              <ActivityIndicator
+                style={styles.indicator}
+                color="#1b6844"
+                size="large"
+              />
+            ) : (
+              todaysUrl && (
+                <Video
+                  source={{
+                    uri: todaysUrl,
+                  }}
+                  paused={true}
+                  controls={true}
+                  style={{ height: "100%", width: "100%" }}
+                  resizeMode="contain"
+                  hideShutterView={true}
+                  playInBackground={false}
+                  playWhenInactive={false}
+                />
+              )
+            )}
+          </View>
+          <Text
+            style={{
+              fontSize: 18,
+              margin: 10,
+              color: "#000",
+              fontFamily: "Roboto-Medium",
+            }}
+          >
+            How is your pain on day {today} ?
           </Text>
           {/* Kindly Use Pain Scale Text */}
           <View
@@ -544,13 +591,13 @@ export default Example = () => {
               flexDirection: "row",
               alignContent: "center",
               justifyContent: "center",
-              width: "90%",
+              width: "100%",
             }}
           >
             <Text
               style={{
-                fontSize: 16,
-                fontFamily: "PT Sans",
+                fontSize: 15,
+                fontFamily: "Roboto-Medium",
                 color: "#000000",
                 textAlign: "center",
               }}
@@ -564,13 +611,26 @@ export default Example = () => {
               data={numberData}
               renderItem={renderNumber}
               horizontal={true}
-              contentContainerStyle={{ alignItems: "center" }}
+              contentContainerStyle={{
+                width: 350,
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+              //ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
             />
           </View>
           <LinearGradient
-            start={{ x: 0, y: 0.5 }}
-            end={{ x: 1, y: 0.5 }}
-            colors={gradientColors}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            locations={[0, 0.16, 0.33, 0.5, 0.67, 0.84]}
+            colors={[
+              "#74b551",
+              "#97c24c",
+              "#f1ca2d",
+              "#e19831",
+              "#d6682d",
+              "#cd2f2c",
+            ]}
             style={{ flex: 1, borderRadius: 20 }}
           >
             <View
@@ -612,17 +672,23 @@ export default Example = () => {
                 }}
               />*/}
               <Slider
-                trackStyle={{ margin: 5 }}
+                trackStyle={{ margin: 2 }}
                 minimumTrackTintColor="gold"
                 maximumTrackTintColor="#ffffff"
                 minimumValue={0}
                 maximumValue={10}
-                thumbTintColor="#3a686a"
+                step={0.1}
+                thumbTintColor="#376858"
                 thumbStyle={{ height: "35%" }}
                 value={patientPain}
                 onValueChange={(value) => {
                   handleSettingImage(value);
                   handlePainValue(value);
+                  setSelectedImageIndex(
+                    parseInt(value) % 2 === 0
+                      ? parseInt(value) / 2
+                      : (parseInt(value) + 1) / 2
+                  );
                 }}
               />
             </View>
@@ -636,161 +702,212 @@ export default Example = () => {
               width: "90%",
               justifyContent: "space-around",
               alignContent: "space-between",
-              marginTop: 10,
-              marginBottom: 10,
+              alignItems: "center",
+              marginVertical: 10,
             }}
           >
-            {images.map((image, index) => {
-              sliderValue < 1 ? (pain = 2) : (pain = painValue);
-              const highLightIndex = (index + 1) * 2;
-              if (pain === highLightIndex) {
-                return (
-                  <Image
-                    key={index}
-                    source={image}
-                    style={{
-                      borderColor: "gold",
-
-                      borderWidth: 5.5,
-                      borderRadius: 25,
-                      width: 45,
-                      height: 45,
-                      opacity: 1,
-                    }}
-                  />
-                );
-              } else {
-                return (
-                  <Image
-                    key={index}
-                    source={image}
-                    style={{ width: 45, height: 45, opacity: 1 }}
-                  />
-                );
-              }
-            })}
+            {images.map((image, index) => (
+              <TouchableOpacity
+                key={index}
+                onPress={() => {
+                  handleSettingImage(index * 2);
+                  handlePainValue(index * 2);
+                  setImage(index * 2);
+                  setSelectedImageIndex(index);
+                }}
+              >
+                <Image
+                  source={image}
+                  style={{
+                    width: selectedImageIndex === index ? 50 : 35,
+                    height: selectedImageIndex === index ? 50 : 35,
+                    opacity: selectedImageIndex === index ? 1 : 0.6,
+                  }}
+                />
+              </TouchableOpacity>
+            ))}
           </View>
 
-          {/* Pain Text Container Indicater */}
+          {/* Pain Text Container Indicator */}
           <View
-            elevation={6}
+            //elevation={6}
             style={{
               alignItems: "center",
               justifyContent: "center",
               backgroundColor: "#DBEFEA",
               borderRadius: 10,
-              width: "89%",
-              height: 60,
+              width: "90%",
+              paddingVertical: 8,
+              paddingHorizontal: 5,
             }}
           >
             <>
-              {image == 2 || image == 0 ? (
+              {image <= 1 && (
                 <>
                   <Text
                     style={{
-                      lineHeight: 32.35,
-                      fontSize: 25,
-                      fontWeight: 700,
-                      fontFamily: "PT Sans",
-                      color: "#2D5A4C",
+                      //lineHeight: 32.35,
+                      fontSize: 18,
+                      fontFamily: "Roboto-Bold",
+                      color: "#376858",
                     }}
                   >
-                    No Pain
+                    No pain
                   </Text>
-                  <Text style={{ color: "#757575", fontWeight: 400 }}>
-                    All is well
+                  <Text
+                    style={{
+                      color: "#757575",
+                      fontWeight: 400,
+                      fontSize: 14,
+                      textAlign: "center",
+                      fontFamily: "Roboto-Medium",
+                    }}
+                  >
+                    I'm good! Hardly notice any pain
                   </Text>
                 </>
-              ) : (
-                <></>
               )}
             </>
             <>
-              {image == 4 ? (
+              {image > 1 && image <= 3 && (
                 <>
                   <Text
                     style={{
-                      lineHeight: 32.35,
-                      fontSize: 25,
-                      fontWeight: 700,
-                      fontFamily: "PT Sans",
-                      color: "#2D5A4C",
+                      //lineHeight: 32.35,
+                      fontSize: 18,
+
+                      fontFamily: "Roboto-Bold",
+                      color: "#376858",
                     }}
                   >
-                    Slight Pain
+                    Mild pain
                   </Text>
-                  <Text style={{ color: "#757575", fontWeight: 400 }}>
-                    Pain is present but does not limit activity
+                  <Text
+                    style={{
+                      color: "#757575",
+                      fontWeight: 400,
+                      fontFamily: "Roboto-Medium",
+                      textAlign: "center",
+                      fontSize: 14,
+                    }}
+                  >
+                    Little distracting but not interfering with routine
+                    activities
                   </Text>
                 </>
-              ) : (
-                <></>
               )}
             </>
             <>
-              {image == 6 ? (
+              {image > 3 && image <= 5 && (
                 <>
                   <Text
                     style={{
-                      lineHeight: 32.35,
-                      fontSize: 25,
-                      fontWeight: 700,
-                      fontFamily: "PT Sans",
-                      color: "#2D5A4C",
+                      //lineHeight: 32.35,
+                      fontSize: 18,
+
+                      fontFamily: "Roboto-Bold",
+                      color: "#376858",
                     }}
                   >
-                    Mild Pain
+                    Moderate pain
                   </Text>
-                  <Text style={{ color: "#757575" }}>
-                    Can do most activities with rest periods
+                  <Text
+                    style={{
+                      color: "#757575",
+                      fontWeight: 400,
+                      textAlign: "center",
+                      fontFamily: "Roboto-Medium",
+                      fontSize: 14,
+                    }}
+                  >
+                    Hard to ignore and interfering with some routine activities
                   </Text>
                 </>
-              ) : (
-                <></>
               )}
             </>
             <>
-              {image == 8 ? (
+              {image > 5 && image <= 7 && (
                 <>
                   <Text
                     style={{
-                      lineHeight: 32.35,
-                      fontSize: 25,
-                      fontWeight: 700,
-                      fontFamily: "PT Sans",
-                      color: "#2D5A4C",
+                      //lineHeight: 32.35,
+                      fontSize: 18,
+
+                      fontFamily: "Roboto-Bold",
+                      color: "#376858",
                     }}
                   >
-                    Severe Pain
+                    Severe pain
                   </Text>
-                  <Text style={{ color: "#757575", fontWeight: 400 }}>
-                    Unable to do most activities because of pain
+                  <Text
+                    style={{
+                      color: "#757575",
+                      fontWeight: 400,
+                      textAlign: "center",
+                      fontFamily: "Roboto-Medium",
+                      fontSize: 14,
+                    }}
+                  >
+                    Can't focus, extremely difficult to perform routine
+                    activities
                   </Text>
                 </>
-              ) : (
-                <></>
               )}
             </>
             <>
-              {image == 10 ? (
+              {image > 7 && image <= 9 && (
                 <>
                   <Text
                     style={{
-                      lineHeight: 32.35,
-                      fontSize: 25,
-                      fontWeight: 700,
-                      fontFamily: "PT Sans",
-                      color: "#2D5A4C",
+                      //lineHeight: 32.35,
+                      fontSize: 18,
+
+                      fontFamily: "Roboto-Bold",
+                      color: "#376858",
                     }}
                   >
-                    Very Severe Pain
+                    Very severe pain
                   </Text>
-                  <Text style={{ color: "#757575", fontWeight: 400 }}>
-                    Unable to do most activities because of pain
+                  <Text
+                    style={{
+                      color: "#757575",
+                      fontWeight: 400,
+                      textAlign: "center",
+                      fontFamily: "Roboto-Medium",
+                      fontSize: 14,
+                    }}
+                  >
+                    Awful! Unable to perform routine activities
                   </Text>
                 </>
-              ) : (
-                <></>
+              )}
+            </>
+            <>
+              {image > 9 && (
+                <>
+                  <Text
+                    style={{
+                      //lineHeight: 32.35,
+                      fontSize: 18,
+
+                      fontFamily: "Roboto-Bold",
+                      color: "#376858",
+                    }}
+                  >
+                    Worst pain possible
+                  </Text>
+                  <Text
+                    style={{
+                      color: "#757575",
+                      fontWeight: 400,
+                      fontFamily: "Roboto-Medium",
+                      textAlign: "center",
+                      fontSize: 14,
+                    }}
+                  >
+                    Intolerable!! Can't think of anything else
+                  </Text>
+                </>
               )}
             </>
           </View>
@@ -798,123 +915,151 @@ export default Example = () => {
           <Text
             style={{
               marginTop: 15,
-              marginBottom: 15,
-              fontSize: 18,
-              color: "black",
-              fontWeight: 400,
+              marginBottom: 5,
+              fontSize: 15,
+              color: "#000",
+              fontFamily: "Roboto-Medium",
             }}
           >
-            Other pain you are going through ?
+            Any other symptoms ?
           </Text>
           {/* NAUSEA and VOMTTING Button */}
           <View
             style={{
-              width: "100%",
+              width: "90%",
               // borderWidth:1,
               // height:'2.27%',
-              height: 40,
-              marginBottom: 20,
-
+              //height: 30,
               flexDirection: "row",
-              alignContent: "center",
-              justifyContent: "space-around",
+              marginBottom: 5,
             }}
           >
-            {/*  =================== Nausea Button ==================== */}
-            <TouchableOpacity
-              onPress={handleClickNausea}
-              style={
-                !nausea ? styles.checkBoxButtons : styles.selectedCheckBoxButton
+            {/* Nausea CheckBox */}
+            <CheckBox
+              title={
+                <Text
+                  style={{
+                    fontFamily: "Roboto-Regular",
+                    fontSize: 13,
+                    color: "#000",
+                    marginLeft: 5,
+                  }}
+                >
+                  Difficulty in urination
+                </Text>
               }
-            >
-              <Text
-                style={
-                  !nausea ? styles.checkBoxText : styles.selectedCheckBoxText
-                }
-              >
-                Nausea
-              </Text>
-            </TouchableOpacity>
+              checked={urination}
+              onPress={() => handleClickUrination()}
+              containerStyle={{
+                backgroundColor: "transparent",
+                borderWidth: 0,
+                padding: 0,
+                width: "55%",
+                margin: 0,
+              }}
+              checkedColor="#376858"
+            />
 
-            {/*  =================== Vomitting Button ==================== */}
-            <TouchableOpacity
-              onPress={handleClickVomitting}
-              style={
-                !vomitting
-                  ? styles.checkBoxButtons
-                  : styles.selectedCheckBoxButton
+            {/* Vomiting CheckBox */}
+            <CheckBox
+              title={
+                <Text
+                  style={{
+                    fontFamily: "Roboto-Regular",
+                    fontSize: 13,
+                    color: "#000",
+                    marginLeft: 5,
+                  }}
+                >
+                  Headache
+                </Text>
               }
-            >
-              <Text
-                style={
-                  !vomitting ? styles.checkBoxText : styles.selectedCheckBoxText
-                }
-              >
-                Vomitting
-              </Text>
-            </TouchableOpacity>
-            {/*</View>*/}
-
-            {/* Hyper Acidity and Bleeding Button */}
-            {/*<View
+              checked={headache}
+              onPress={() => handleClickHeadache()}
+              containerStyle={{
+                backgroundColor: "transparent",
+                borderWidth: 0,
+                padding: 0,
+                width: "45%",
+                margin: 0,
+              }}
+              checkedColor="#376858"
+            />
+          </View>
+          <View
             style={{
-              width: '100%',
-              height: '2.57%',
+              width: "90%",
               // borderWidth:1,
-              marginBottom: 10,
-              flexDirection: 'row',
-              alignContent: 'center',
-              justifyContent: 'space-around',
-            }}>*/}
-            <TouchableOpacity
-              onPress={handleClickHyperAcidity}
-              style={
-                !hyperAcidity
-                  ? styles.checkBoxButtons
-                  : styles.selectedCheckBoxButton
+              // height:'2.27%',
+              //height: 55,
+              //marginBottom: 5,
+              flexDirection: "row",
+            }}
+          >
+            {/* Bleeding CheckBox */}
+            <CheckBox
+              title={
+                <Text
+                  style={{
+                    fontFamily: "Roboto-Regular",
+                    fontSize: 13,
+                    color: "#000",
+                    marginLeft: 5,
+                  }}
+                >
+                  Bleeding Discharge
+                </Text>
               }
-            >
-              <Text
-                style={
-                  !hyperAcidity
-                    ? styles.checkBoxText
-                    : styles.selectedCheckBoxText
-                }
-              >
-                Hyper Acidity
-              </Text>
-            </TouchableOpacity>
+              checked={bleeding}
+              onPress={() => handleClickBleeding()}
+              containerStyle={{
+                backgroundColor: "transparent",
+                borderWidth: 0,
+                padding: 0,
+                width: "55%",
+                margin: 0,
+              }}
+              checkedColor="#376858"
+            />
+            {/* Hyper Acidity CheckBox */}
 
-            <TouchableOpacity
-              onPress={handleClickBleeding}
-              style={
-                !bleeding
-                  ? styles.checkBoxButtons
-                  : styles.selectedCheckBoxButton
+            <CheckBox
+              title={
+                <Text
+                  style={{
+                    fontFamily: "Roboto-Regular",
+                    fontSize: 13,
+                    color: "#000",
+                    marginLeft: 5,
+                  }}
+                >
+                  Fever
+                </Text>
               }
-            >
-              <Text
-                style={
-                  !bleeding ? styles.checkBoxText : styles.selectedCheckBoxText
-                }
-              >
-                Bleeding
-              </Text>
-            </TouchableOpacity>
+              checked={fever}
+              onPress={() => handleClickFever()}
+              containerStyle={{
+                backgroundColor: "transparent",
+                borderWidth: 0,
+                padding: 0,
+                width: "45%",
+                margin: 0,
+              }}
+              checkedColor="#376858"
+            />
           </View>
 
           {/*  =================== Submit Button ==================== */}
           <TouchableOpacity
-            elevation={10}
+            //elevation={10}
             style={styles.submit}
             onPress={handleSubmit}
           >
             <Text
               style={{
-                fontSize: 22,
-                color: "#222222",
-                fontFamily: "PT Sans",
-                fontWeight: "bold",
+                fontSize: 18,
+                color: "#000",
+                fontFamily: "Roboto-Medium",
               }}
             >
               Submit
@@ -926,7 +1071,7 @@ export default Example = () => {
               visible={isSuccessModalVisible}
               onClose={handleCloseSuccessModal}
               massage1={"Thank you for updating your pain status!"}
-              massage2={massages[painValue]}
+              massage2={massages[sliderValue]}
             />
           </View>
 
@@ -1009,9 +1154,9 @@ const styles = StyleSheet.create({
   submit: {
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "gold",
-    borderRadius: 25,
-    marginBottom: 10,
+    backgroundColor: "#FFD700",
+    borderRadius: 20,
+    marginVertical: 15,
     width: width * 0.35,
     height: height * 0.05,
   },

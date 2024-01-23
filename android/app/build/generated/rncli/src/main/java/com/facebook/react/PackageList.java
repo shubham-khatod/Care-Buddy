@@ -11,6 +11,8 @@ import com.facebook.react.shell.MainReactPackage;
 import java.util.Arrays;
 import java.util.ArrayList;
 
+// react-native-video
+import com.brentvatne.react.ReactVideoPackage;
 // @react-native-async-storage/async-storage
 import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 // @react-native-community/masked-view
@@ -53,8 +55,6 @@ import com.swmansion.rnscreens.RNScreensPackage;
 import com.horcrux.svg.SvgPackage;
 // react-native-vector-icons
 import com.oblador.vectoricons.VectorIconsPackage;
-// react-native-video
-import com.brentvatne.react.ReactVideoPackage;
 // react-native-webview
 import com.reactnativecommunity.webview.RNCWebViewPackage;
 // react-native-youtube
@@ -104,6 +104,7 @@ public class PackageList {
   public ArrayList<ReactPackage> getPackages() {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
       new MainReactPackage(mConfig),
+      new ReactVideoPackage(),
       new AsyncStoragePackage(),
       new RNCMaskedViewPackage(),
       new ReactSliderPackage(),
@@ -125,7 +126,6 @@ public class PackageList {
       new RNScreensPackage(),
       new SvgPackage(),
       new VectorIconsPackage(),
-      new ReactVideoPackage(),
       new RNCWebViewPackage(),
       new ReactNativeYouTube()
     ));

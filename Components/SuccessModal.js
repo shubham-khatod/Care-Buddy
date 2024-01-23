@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 import {
   View,
   StyleSheet,
@@ -8,29 +8,109 @@ import {
   Text,
   TouchableOpacity,
   Animated,
-} from 'react-native';
+  ImageBackground,
+} from "react-native";
 
 export const SuccessModal = ({ visible, onClose, massage1, massage2 }) => {
-  
   return (
     <Modal
       visible={visible}
-      animationType="slide"
+      animationType="fade"
       transparent={true}
       onRequestClose={onClose}
     >
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
-        <View style={{ backgroundColor: '#fff', padding: 20, borderRadius: 10 }}>
-          <Text style={{ fontSize: 21, color: 'green', justifyContent: 'center', textAlign: 'center', alignItems: 'center', fontWeight: 'bold', marginBottom: 10 }}>{massage1}</Text>
-          <Text style={{ fontSize: 19, color: 'green', textAlign: 'justify' ,justifyContent: 'center', alignItems: 'center', fontWeight: 'bold', marginBottom: 10 }}>{massage2}</Text>
-          <TouchableOpacity style={{ backgroundColor: '#007bff', padding: 10, borderRadius: 5, marginTop: 20 }} onPress={onClose}>
-            <Text style={{ color: '#fff', textAlign: 'center' }}>Close</Text>
-          </TouchableOpacity>
-        </View>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          paddingHorizontal: 10,
+          width: "100%",
+        }}
+      >
+        <ImageBackground
+          source={require("../assets/images/popup-bg.jpg")}
+          style={{
+            paddingVertical: 20,
+
+            borderRadius: 10,
+            borderWidth: 3,
+            borderColor: "gold",
+            width: "100%",
+          }}
+        >
+          <View
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 20,
+                color: "#376858",
+                fontFamily: "Roboto-Medium",
+                justifyContent: "center",
+                textAlign: "center",
+                alignItems: "center",
+                paddingHorizontal: 5,
+                paddingBottom: 10,
+              }}
+            >
+              {massage1}
+            </Text>
+
+            <View
+              style={{
+                borderTopWidth: 1,
+                borderStyle: "dashed",
+                borderColor: "#376858",
+                width: "95%",
+              }}
+            ></View>
+
+            <Text
+              style={{
+                fontSize: 16,
+                color: "#376858",
+                textAlign: "center",
+                justifyContent: "center",
+                alignItems: "center",
+                fontFamily: "Roboto-Medium",
+                paddingTop: 10,
+                paddingHorizontal: 5,
+              }}
+            >
+              {massage2}
+            </Text>
+            <TouchableOpacity
+              style={{
+                backgroundColor: "#FFD700",
+
+                width: 100,
+                padding: 5,
+                borderRadius: 5,
+                marginTop: 15,
+              }}
+              onPress={onClose}
+            >
+              <Text
+                style={{
+                  color: "#000",
+                  textAlign: "center",
+                  fontSize: 14,
+                  fontFamily: "Roboto-Medium",
+                }}
+              >
+                Close
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </ImageBackground>
       </View>
     </Modal>
   );
 };
-
-
- 

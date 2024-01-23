@@ -1,8 +1,8 @@
-import {useNavigation} from '@react-navigation/native';
-import React, {useEffect, useState} from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import Orientation from 'react-native-orientation-locker';
-import firestore from '@react-native-firebase/firestore';
+import { useNavigation } from "@react-navigation/native";
+import React, { useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import Orientation from "react-native-orientation-locker";
+import firestore from "@react-native-firebase/firestore";
 import {
   Image,
   SafeAreaView,
@@ -14,11 +14,11 @@ import {
   View,
   ActivityIndicator,
   TouchableOpacity,
-} from 'react-native';
+} from "react-native";
 import {
   NotificationServices,
   requestUserPermission,
-} from '../utils/pushNotificationsl';
+} from "../utils/pushNotificationsl";
 
 export default function HomeScreen() {
   const navigator = useNavigation();
@@ -36,11 +36,11 @@ export default function HomeScreen() {
   });
 
   async function getTemplate() {
-    var user = await AsyncStorage.getItem('userSession');
+    var user = await AsyncStorage.getItem("userSession");
     if (user !== null) {
       // navigator.navigate('Form')
       console.log(user);
-      navigator.navigate('Routes');
+      navigator.navigate("Routes");
       setLoading(false);
     } else {
       setLoading(false);
@@ -48,7 +48,7 @@ export default function HomeScreen() {
   }
 
   return (
-    <SafeAreaView style={{backgroundColor: 'white', flex: 1}}>
+    <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
       {loading ? (
         <ActivityIndicator
           style={styles.indicator}
@@ -56,9 +56,9 @@ export default function HomeScreen() {
           size="large"
         />
       ) : (
-        <View style={{backgroundColor: 'white', flex: 1}}>
+        <View style={{ backgroundColor: "white", flex: 1 }}>
           <View style={styles.top}>
-            <View style={{top: '34.35%'}}>
+            <View style={{ top: "34.35%" }}>
               <Text style={styles.txt}>Welcome</Text>
               <Text style={styles.txt}>To</Text>
               <Text style={styles.txt}>Care Buddy</Text>
@@ -66,42 +66,44 @@ export default function HomeScreen() {
 
             <Image
               style={styles.circle}
-              source={require('../../assets/images/circle.png')}
+              source={require("../../assets/images/circle.png")}
             />
             <Image
               style={styles.logo}
-              source={require('../../assets/images/grayLogo.png')}
+              source={require("../../assets/images/grayLogo.png")}
             />
           </View>
           <Image
             style={styles.vector1}
-            source={require('../../assets/images/Vector1.png')}
+            source={require("../../assets/images/Vector1.png")}
           />
           <Image
             style={styles.vector2}
-            source={require('../../assets/images/Vector2.png')}
+            source={require("../../assets/images/Vector2.png")}
           />
           <Image
             style={styles.vector3}
-            source={require('../../assets/images/Vector3.png')}
+            source={require("../../assets/images/Vector3.png")}
           />
           <Image
             style={styles.circle1}
-            source={require('../../assets/images/drkcircle.png')}
+            source={require("../../assets/images/drkcircle.png")}
           />
           <Image
             style={styles.circle2}
-            source={require('../../assets/images/drkcircle.png')}
+            source={require("../../assets/images/drkcircle.png")}
           />
           <Image
             style={styles.circle3}
-            source={require('../../assets/images/drkcircle.png')}
+            source={require("../../assets/images/drkcircle.png")}
           />
           <Text style={styles.txt1}>Relieving Pain</Text>
           <Text style={styles.txt2}>Renewing Hope</Text>
           <Text style={styles.txt3}>Restoring Function</Text>
 
-          <Text style={styles.txt4}>Click Below To Proceed {/*Select The Pain Type*/}</Text>
+          <Text style={styles.txt4}>
+            Click Below To Proceed {/*Select The Pain Type*/}
+          </Text>
           <View style={styles.buttonbox}>
             {/*<TouchableOpacity
               style={styles.imageStyle1}
@@ -118,11 +120,12 @@ export default function HomeScreen() {
             <TouchableOpacity
               style={styles.imageStyle2}
               onPress={() => {
-                navigator.navigate('OptionPage');
+                navigator.navigate("OptionPage");
               }}
-              elevation={5}>
+              elevation={5}
+            >
               <Image
-                source={require('../../assets/images/Inpatientnew.png')}
+                source={require("../../assets/images/Inpatientnew.png")}
                 style={styles.imageStyle2}
               />
             </TouchableOpacity>
@@ -136,105 +139,105 @@ export default function HomeScreen() {
 styles = StyleSheet.create({
   indicator: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   top: {
-    width: '100%',
-    height: '46.56%',
-    backgroundColor: '#376858',
+    width: "100%",
+    height: "46.56%",
+    backgroundColor: "#376858",
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
   },
   circle: {
-    position: 'absolute',
-    top: '79%',
+    position: "absolute",
+    top: "79%",
     height: 129,
     width: 129,
-    left: '33.58%',
+    left: "33.58%",
   },
   logo: {
-    position: 'absolute',
-    top: '79.80%',
+    position: "absolute",
+    top: "79.80%",
     height: 120,
     width: 85,
-    left: '40%',
+    left: "40%",
   },
   txt: {
     fontSize: 30,
-    fontFamily: 'PT Sans',
-    fontStyle: 'normal',
+    fontFamily: "Roboto-Medium",
+    fontStyle: "normal",
     fontWeight: 400,
-    textAlign: 'center',
-    color: '#FFFFFF',
+    textAlign: "center",
+    color: "#FFFFFF",
   },
   vector1: {
     marginTop: 15,
     width: 84,
     height: 27,
-    left: '18.60%',
+    left: "18.60%",
   },
   vector2: {
-    left: '48%',
+    left: "48%",
   },
   vector3: {
-    left: '53.10%',
-    top: '49.80%',
-    position: 'absolute',
+    left: "53.10%",
+    top: "49.80%",
+    position: "absolute",
   },
   circle1: {
-    position: 'absolute',
-    left: '46.90%',
-    top: '58.20%',
+    position: "absolute",
+    left: "46.90%",
+    top: "58.20%",
   },
   circle2: {
-    position: 'absolute',
-    top: '52%',
-    left: '17.70%',
+    position: "absolute",
+    top: "52%",
+    left: "17.70%",
   },
   circle3: {
-    position: 'absolute',
-    top: '52.5%',
-    left: '75.20%',
+    position: "absolute",
+    top: "52.5%",
+    left: "73.7%",
   },
   txt1: {
-    color: '#376858',
-    position: 'absolute',
+    color: "#376858",
+    position: "absolute",
 
-    top: '54%',
-    fontFamily: 'PT Sans',
-    fontStyle: 'normal',
+    top: "54%",
+    fontFamily: "Roboto-Regular",
+    fontStyle: "normal",
 
     fontWeight: 400,
 
     fontSize: 14,
-    left: '10%',
+    left: "10%",
   },
   txt2: {
-    color: '#376858',
-    position: 'absolute',
+    color: "#376858",
+    position: "absolute",
 
-    top: '54%',
-    fontFamily: 'PT Sans',
-    fontStyle: 'normal',
+    top: "54%",
+    fontFamily: "Roboto-Regular",
+    fontStyle: "normal",
 
     fontWeight: 400,
 
     fontSize: 14,
-    left: '65%',
+    left: "65%",
   },
   txt3: {
-    color: '#376858',
-    position: 'absolute',
+    color: "#376858",
+    position: "absolute",
 
-    top: '60%',
-    fontFamily: 'PT Sans',
-    fontStyle: 'normal',
+    top: "60%",
+    fontFamily: "Roboto-Regular",
+    fontStyle: "normal",
 
     fontWeight: 400,
 
     fontSize: 14,
-    left: '33%',
+    left: "33%",
   },
   // btmbox:{
   //       flex:1,
@@ -248,36 +251,37 @@ styles = StyleSheet.create({
 
   // },
   txt4: {
-    position: 'absolute',
-    top: '68%',
-    color: '#376858',
-    left: '22%',
-    fontWeight: 700,
-    fontSize: 20,
+    fontFamily: "Roboto-Medium",
+    position: "absolute",
+    top: "69%",
+    color: "#376858",
+    left: "22%",
+
+    fontSize: 18,
   },
 
   imageStyle1: {
-    position: 'absolute',
+    position: "absolute",
     borderRadius: 10,
     width: 95,
     height: 95,
-    left: '45%',
+    left: "45%",
     marginTop: 7,
   },
   imageStyle2: {
-    position: 'absolute',
+    position: "absolute",
     borderRadius: 10,
     marginTop: 7,
     width: 95,
     height: 95,
-    left: '30%',
+    left: "30%",
   },
 
   buttonbox: {
     height: 120,
     flex: 1,
     //borderWidth:3,
-    borderColor: 'black',
+    borderColor: "black",
     marginTop: 121,
   },
 });

@@ -1,6 +1,6 @@
 //import liraries
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {Dimensions} from 'react-native';
+import { Dimensions } from "react-native";
 import Header from "./Header";
 import React, { Component, useMemo, useState, useEffect } from "react";
 import {
@@ -17,6 +17,7 @@ import {
   LogBox,
 } from "react-native";
 import { SuccessModal } from "../../Components/SuccessModal";
+import { ErrorModal } from "../../Components/ErrorModal";
 import Mailer from "react-native-mail";
 import firebase from "@react-native-firebase/app";
 import Orientation from "react-native-orientation-locker";
@@ -131,9 +132,11 @@ export default function Call({ navigator }) {
     useState("");
   const [textforOrderMedcine, setTextforOrderMedcine] = useState("");
   const [whatsAppNumberOrederMed, setWhatsAppNumberOrederMed] = useState("");
-
+  const [generalMed, setGeneralMed] = useState([]);
+  const [prescribedMed, setPrescribedMed] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [searchText, setSearchText] = useState("");
-  const itemList = [
+  /* const itemList = [
     { id: 1, name: "ACIDEEM", quantity: 0 },
     { id: 2, name: "Anoac Cream", quantity: 0 },
     { id: 3, name: "ANOAC H", quantity: 0 },
@@ -169,47 +172,77 @@ export default function Call({ navigator }) {
     { id: 33, name: "Turmocin Tab", quantity: 0 },
     { id: 34, name: "ULTRACET", quantity: 0 },
     { id: 35, name: "VOVERAN SR 100MG", quantity: 0 },
-    { id: 36, name: "VOVERAN SR 75MG", quantity: 0 }, 
+    { id: 36, name: "VOVERAN SR 75MG", quantity: 0 },
     //Add items as needed
-  ];
-  const [products, setProducts] = useState(itemList);
+  ];*/
+  const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-  const windowWidth = Dimensions.get('screen').width;
-const windowHeight = Dimensions.get('screen').height;
+  const windowWidth = Dimensions.get("screen").width;
+  const windowHeight = Dimensions.get("screen").height;
 
   const handleAddToCart = () => {
-    const selectedItems = products.filter((product) => product.quantity > 0);
+    const PrescribedItems =
+      prescribedMed && prescribedMed.filter((product) => product.quantity > 0);
+    const generalItems = generalMed.filter((product) => product.quantity > 0);
+    const selectedItems = [...PrescribedItems, ...generalItems];
     //setCartItems(selectedItems);
-    console.log("Items added to cart:", selectedItems);
+    //console.log("Items added to cart:", selectedItems);
     //setMed((prev)=> selectedItems);
     //console.log(med);
-    handleOrder(selectedItems);
+    console.log("Selected Items:", selectedItems);
+    selectedItems && selectedItems.length > 0
+      ? handleOrder(selectedItems)
+      : setIsErrorModalVisible(true);
     // Add your logic to handle adding items to the cart
   };
 
   const handleAddQuantity = (productId) => {
-    const updatedProducts = products.map((product) =>
+    const updatedProductsA =
+      prescribedMed &&
+      prescribedMed.map((product) =>
+        product.id === productId
+          ? { ...product, quantity: product.quantity + 1 }
+          : product
+      );
+    setPrescribedMed(updatedProductsA);
+
+    const updatedProductsB = generalMed.map((product) =>
       product.id === productId
         ? { ...product, quantity: product.quantity + 1 }
         : product
     );
-    setProducts(updatedProducts);
+    setGeneralMed(updatedProductsB);
   };
 
   const handleRemoveQuantity = (productId) => {
-    const updatedProducts = products.map((product) =>
+    const updatedProductsA =
+      prescribedMed &&
+      prescribedMed.map((product) =>
+        product.id === productId && product.quantity > 0
+          ? { ...product, quantity: product.quantity - 1 }
+          : product
+      );
+    setPrescribedMed(updatedProductsA);
+
+    const updatedProductsB = generalMed.map((product) =>
       product.id === productId && product.quantity > 0
         ? { ...product, quantity: product.quantity - 1 }
         : product
     );
-    setProducts(updatedProducts);
+    setGeneralMed(updatedProductsB);
   };
 
   const handleSearchTextChange = (text) => {
     setSearchText(text);
   };
 
-  const filteredProducts = products.filter((product) =>
+  const filteredProducts =
+    prescribedMed &&
+    prescribedMed.filter((product) =>
+      product.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+
+  const filteredProductsA = generalMed.filter((product) =>
     product.name.toLowerCase().includes(searchText.toLowerCase())
   );
   const renderProductItem = ({ item }) => (
@@ -246,15 +279,21 @@ const windowHeight = Dimensions.get('screen').height;
   let oneTimeFirestore = 0;
 
   const [isSuccessModalVisible, setIsSuccessModalVisible] = useState(false);
+  const [isErrorModalVisible, setIsErrorModalVisible] = useState(false);
 
   const handleSuccessSubmit = () => {
     // Submit form logic goes here
+    setIsLoading(true);
     setIsSuccessModalVisible(true);
   };
 
   const handleCloseSuccessModal = () => {
+    readGeneralMedicines();
     setIsSuccessModalVisible(false);
-    setProducts(itemList);
+  };
+
+  const handleCloseErrorModal = () => {
+    setIsErrorModalVisible(false);
   };
 
   async function getTemplate() {
@@ -276,42 +315,84 @@ const windowHeight = Dimensions.get('screen').height;
         }
       })
       .catch((error) => console.log(error));
-    console.log(pressedButtons);
+    //console.log(pressedButtons);
   }
 
   const [isButtonPressed, setIsButtonPressed] = useState(true);
 
   var medicalPhoneNumber = "";
 
-  const readMedicines = async () => {
-    var userData = await AsyncStorage.getItem("userSession");
+  const readGeneralMedicines = async () => {
+    try {
+      setIsLoading(true);
+      var userData = await AsyncStorage.getItem("userSession");
 
-    if (userData !== null) {
-      userData = JSON.parse(userData);
+      if (userData !== null) {
+        userData = JSON.parse(userData);
 
-      // console.log('USER DATA: ', userData);
-      var branch = userData.branchName;
-      var temp = await firestore()
-        .collection("Users")
-        .doc(userData.timeStamp.toString())
-        .get();
-      userData = temp.data();
+        var temp = await firestore()
+          .collection("Users")
+          .doc(userData.timeStamp.toString())
+          .get();
+        userData = temp.data();
+        if (userData.medicines && userData.medicines[0] !== "No Medicines") {
+          const medlist = userData.medicines;
+          const PrescribedItems = medlist.map((name, index) => ({
+            id: index + 100,
+            name: name
+              .toLowerCase()
+              .split(" ")
+              .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+              .join(" "),
+            quantity: 0,
+          }));
+          console.log(PrescribedItems);
+          setPrescribedMed(PrescribedItems);
 
-      // console.log('Dataaaa: ', userData);
-      setMed(userData.medicines);
-      setMedTime(userData.medicinetime);
-      setMedDays(userData.medicinedays);
+          var temp = await firestore()
+            .collection("Medicine")
+            .doc("Medicine")
+            .get();
+          let med = temp.data();
+          if (med) {
+            const itemList = Object.entries(med).map(([id, name]) => ({
+              id: parseInt(id),
+              name,
+              quantity: 0,
+            }));
 
-      if (userData.medicines[0] == "No Medicines") {
-        // Alert.alert('No Medicine found.');
-        setIsMedicineAvailable(false);
-        setMed([]);
-        setMedTime([]);
-        setMedDays([]);
+            const remainingMed = [
+              ...itemList.filter(
+                (item) =>
+                  !PrescribedItems.some(
+                    (existingItem) => existingItem.name === item.name
+                  )
+              ),
+            ];
+            setIsLoading(false);
+            setGeneralMed(remainingMed);
+          }
+        } else {
+          var temp = await firestore()
+            .collection("Medicine")
+            .doc("Medicine")
+            .get();
+          let med = temp.data();
+          if (med) {
+            const itemList = Object.entries(med).map(([id, name]) => ({
+              id: parseInt(id),
+              name,
+              quantity: 0,
+            }));
+            setIsLoading(false);
+            setPrescribedMed([]);
+            setGeneralMed(itemList);
+          }
+        }
       }
-      console.log("Med: ", med);
+    } catch (error) {
+      console.error("Error in readGeneralMedicines:", error);
     }
-    return;
   };
 
   const readData = async () => {
@@ -329,7 +410,7 @@ const windowHeight = Dimensions.get('screen').height;
       // console.log('Dataaaa: ', userData);
       setCallNumber(userData.whatsAppFollowUpAppointment);
       // medicalPhoneNumber = userData.whatsAppFollowUpAppointment;
-      console.log(callNumber);
+      //console.log(callNumber);
     }
     setCallLoading(false);
     return;
@@ -339,11 +420,11 @@ const windowHeight = Dimensions.get('screen').height;
   // This useEffect is used to fetch readMedicines and readData of medical only once.
   useEffect(() => {
     Orientation.lockToPortrait(); // Lock screen to portrait mode
-    
-    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
-  
-    //readMedicines();
+
+    LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
+
     readData();
+    readGeneralMedicines();
   }, []);
 
   // This useEffect is used to update the selected medicines continuously based on selection and de-selection.
@@ -366,16 +447,16 @@ const windowHeight = Dimensions.get('screen').height;
 
   const handleOrder = async (items) => {
     var orderedMedicines = items;
-    console.log("Ordered Medicines are: ", orderedMedicines);
+    //console.log("Ordered Medicines are: ", orderedMedicines);
 
     var userData = await AsyncStorage.getItem("userSession");
 
     // If the userData is not empty, then only move for the further firebase functionality.
     if (userData !== null) {
       userData = JSON.parse(userData);
-      userData.orderedMedicines =orderedMedicines;
-      console.log("User Data is updated",userData);
-      
+      userData.orderedMedicines = orderedMedicines;
+      //console.log("User Data is updated", userData);
+
       var temp = await firestore()
         .collection("Users")
         .doc(userData.timeStamp.toString())
@@ -401,6 +482,8 @@ const windowHeight = Dimensions.get('screen').height;
       // userData.orderedMedicines = orderedMedicines;
 
       await AsyncStorage.setItem("userSession", JSON.stringify(userData));
+      setPrescribedMed([]);
+      setGeneralMed([]);
       handleSuccessSubmit();
       return;
     }
@@ -422,7 +505,7 @@ const windowHeight = Dimensions.get('screen').height;
   const [selectedButton, setState] = useState(0);
   return (
     <SafeAreaView style={styles.container}>
-      <Header title={'Order Medicines'}/>
+      <Header title={"Order Medicines"} />
       {loading ? (
         <ActivityIndicator
           style={styles.indicator}
@@ -430,9 +513,8 @@ const windowHeight = Dimensions.get('screen').height;
           size="large"
         />
       ) : (
-      
-          <View>
-            {/*<View
+        <View>
+          {/*<View
               style={{
                 
                 alignItems: "center",
@@ -446,32 +528,102 @@ const windowHeight = Dimensions.get('screen').height;
                 style={{ width: 46, height: 66 }}
               />
             </View>*/}
-            <View style={{ height: windowHeight * 0.7, width: windowWidth* 0.85, marginTop: 20 }}>
-            <SafeAreaView style={{flex: 1}}>
-              <View style={styles.searchContainer}>
-                <TextInput
-                  style={styles.searchInput}
-                  placeholder="Search"
-                  value={searchText}
-                  onChangeText={handleSearchTextChange}
-                />
-              </View>
-            
-              
-              <FlatList
-                data={filteredProducts}
-                renderItem={renderProductItem}
-                keyExtractor={(item) => item.id.toString()}
-                style={styles.productList}
+          <View
+            style={{
+              height: windowHeight * 0.75,
+              width: windowWidth * 0.9,
+              marginTop: 5,
+            }}
+          >
+            {isLoading ? (
+              <ActivityIndicator
+                style={styles.indicator}
+                color="#1b6844"
+                size="large"
               />
+            ) : (
+              <SafeAreaView style={{ flex: 1 }}>
+                <View style={styles.searchContainer}>
+                  <TextInput
+                    style={styles.searchInput}
+                    placeholder="Search"
+                    value={searchText}
+                    onChangeText={handleSearchTextChange}
+                  />
+                </View>
+                {prescribedMed && prescribedMed.length > 0 && (
+                  <View
+                    style={{
+                      flex: 1,
+                      marginTop: 4,
+                      borderWidth: 1,
+                      borderRadius: 8,
+                      borderColor: "gray",
+                      padding: 8,
+                    }}
+                  >
+                    <Text
+                      style={{
+                        color: "#376858",
+                        fontFamily: "Roboto-Medium",
+                        fontSize: 12,
+                      }}
+                    >
+                      Prescribed medicines:
+                    </Text>
+                    <FlatList
+                      data={filteredProducts}
+                      renderItem={renderProductItem}
+                      keyExtractor={(item) => item.id.toString()}
+                      style={{
+                        marginTop: 4,
+                      }}
+                      showsVerticalScrollIndicator={true}
+                    />
+                  </View>
+                )}
+                <View
+                  style={{
+                    flex: 1,
+                    marginTop: 4,
+                    borderWidth: 1,
+                    borderRadius: 8,
+                    borderColor: "gray",
+                    padding: 8,
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: "#376858",
+                      fontFamily: "Roboto-Medium",
+                      fontSize: 12,
+                    }}
+                  >
+                    General medicines:
+                  </Text>
+                  <FlatList
+                    data={filteredProductsA}
+                    renderItem={renderProductItem}
+                    keyExtractor={(item) => item.id.toString()}
+                    style={styles.productList}
+                    showsVerticalScrollIndicator={true}
+                  />
+                </View>
               </SafeAreaView>
+            )}
+            <View
+              style={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
               <TouchableOpacity
                 style={styles.addToCartButton}
                 onPress={handleAddToCart}
               >
                 <Text style={styles.addToCartButtonText}>Place Order</Text>
               </TouchableOpacity>
-          
+            </View>
 
             {/* <Text style={styles.head}>Your Medicine</Text>
           {// Medicines Rendering Code }
@@ -537,8 +689,16 @@ const windowHeight = Dimensions.get('screen').height;
               <SuccessModal
                 visible={isSuccessModalVisible}
                 onClose={handleCloseSuccessModal}
-                massage1={"Your order placed successfully!"}
-                massage2={"Our pharmacist will call you shortly.."}
+                massage1={"Your order has been placed successfully!"}
+                massage2={"Our pharmacist will call you shortly."}
+              />
+            </View>
+            <View>
+              <ErrorModal
+                visible={isErrorModalVisible}
+                onClose={handleCloseErrorModal}
+                massage1={"Your cart is empty!"}
+                massage2={"Please add medicines to place an order."}
               />
             </View>
             {callLoading ? (
@@ -548,35 +708,33 @@ const windowHeight = Dimensions.get('screen').height;
                 size="large"
               />
             ) : (
-              
               <View
                 style={{
                   alignItems: "center",
                   justifyContent: "center",
-                  
-                  
                 }}
               >
                 <TouchableOpacity onPress={handlePhoneCall}>
-                  <Image
+                  {/* <Image
                     source={require("../../assets/images/callcircle.png")}
                     style={{ width: 65, height: 65 }}
+                  /> */}
+                  <Image
+                    source={require("../../assets/images/callnow.png")}
+                    style={{ width: 35, height: 35, margin: 5 }}
                   />
                 </TouchableOpacity>
                 <Text
                   style={{
-                    fontFamily: "Inter",
-                    fontStyle: "normal",
+                    fontFamily: "Roboto-Regular",
+
                     color: "#000000",
                     fontSize: 10,
-                    fontWeight: 300,
                   }}
                 >
-                  {" "}
-                  You Can Also Call For Other Medicine
+                  For any other medicines, kindly call us
                 </Text>
               </View>
-              
             )}
           </View>
         </View>
@@ -682,11 +840,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  Listcontainer: {
-    
-  },
+  Listcontainer: {},
   searchContainer: {
-    marginBottom: 16,
+    marginBottom: 2,
   },
   searchInput: {
     height: 40,
@@ -694,24 +850,22 @@ const styles = StyleSheet.create({
     borderColor: "gray",
     borderRadius: 8,
     paddingHorizontal: 12,
-    color: '#555555'
+    color: "#555555",
+    fontFamily: "Roboto-Medium",
   },
   productList: {
-    flex: 1,
-    marginBottom: 10,
-    
+    marginTop: 4,
   },
   productItem: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 8,
-    
   },
   productName: {
-    fontSize: 16,
-    fontWeight: "bold",
-    color: '#555555'
+    fontFamily: "Roboto-Medium",
+    fontSize: 14,
+    color: "#555555",
   },
   quantityContainer: {
     flexDirection: "row",
@@ -719,33 +873,39 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   quantityButton: {
-    width: 30,
-    height: 30,
+    width: 26,
+    height: 26,
     backgroundColor: "lightgray",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 15,
+    borderRadius: 13,
     marginHorizontal: 8,
   },
   quantityButtonText: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: '#555555',
+    fontSize: 16,
+    fontFamily: "Roboto-Bold",
+    color: "#555555",
   },
   quantityText: {
-    fontSize: 18,
-    color: '#555555',
+    fontSize: 16,
+    fontFamily: "Roboto-Medium",
+    color: "#555555",
   },
   addToCartButton: {
+    width: 150,
+    textAlign: "center",
     backgroundColor: "gold",
-    borderRadius: 8,
-    paddingVertical: 12,
+    borderRadius: 20,
+    paddingVertical: 8,
+    margin: 10,
     alignItems: "center",
+    justifyContent: "center",
   },
   addToCartButtonText: {
-    color: "#222222",
-    fontSize: 22,
-    fontWeight: "bold",
+    color: "#000",
+    fontSize: 18,
+
+    fontFamily: "Roboto-Medium",
   },
 });
 

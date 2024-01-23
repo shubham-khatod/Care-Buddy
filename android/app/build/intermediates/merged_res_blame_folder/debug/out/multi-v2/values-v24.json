@@ -4,7 +4,7 @@
             "outputFile": "com.painscore.app-mergeDebugResources-36:/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-3\\8da2f441021c317b5337b5cff7d234e5\\transformed\\media-1.0.0\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\DELL\\.gradle\\caches\\transforms-3\\a8a85ec3f7c1b2fe73d8e93ea625262c\\transformed\\media-1.2.1\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

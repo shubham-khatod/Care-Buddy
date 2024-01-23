@@ -221,7 +221,11 @@ const OptionPage = () => {
         source={require("../../assets/images/grayLogo.png")}
         style={styles.logo}
       />
-
+      <View style={{ top: "31%" }}>
+        <Text style={{ fontSize: 16, fontWeight: 500, color: "black" }}>
+          Please scan QR Code printed on discharge card
+        </Text>
+      </View>
       {/* QR Scanner -> Scanning Receipt and calling handleQR function */}
 
       <View style={styles.frame}>
@@ -274,7 +278,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: "100%",
     width: "100%",
-    top: "14%",
+    //top: "14%",
   },
   button: {
     backgroundColor: "blue",

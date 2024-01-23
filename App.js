@@ -8,15 +8,11 @@
 import React, { useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import HomeScreen from "./src/screens/HomeScreen";
-import call from "./src/screens/Call";
-import profile from "./src/screens/Profile";
-import Bookappointment from "./src/screens/Bookappointment";
-import Menu from "./src/screens/Inpatient";
+
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import Form from "./src/screens/Form";
-import firestore from "@react-native-firebase/firestore";
-import firebase from "@react-native-firebase/app";
+
 import { createDrawerNavigator } from "@react-navigation/drawer";
 //const tab= createBottomTabNavigator();
 import {
@@ -28,21 +24,15 @@ import {
   useColorScheme,
   View,
   Button,
+  PermissionsAndroid,
+  Platform,
 } from "react-native";
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from "react-native/Libraries/NewAppScreen";
 import Routes from "./navigation/Routes";
 import Signup from "./src/screens/Signup";
 import OptionPage from "./src/screens/OptionPage";
 import Outpatient from "./src/screens/OutPatientDepartment";
 import VideoLibrary from "./src/screens/VideoLibrary";
-import MainNavigator from "./navigation/DrawerNavigation";
 import Profile from "./src/screens/Profile";
 
 //import CustomSidebarMenu from "./CustomSidebarMenu";
@@ -60,6 +50,18 @@ import Profile from "./src/screens/Profile";
 }*/
 const Drawer = createDrawerNavigator();
 function App() {
+  useEffect(() => {
+    checkApplicationPermission();
+  }, []);
+  const checkApplicationPermission = async () => {
+    if (Platform.OS === "android") {
+      try {
+        await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS
+        );
+      } catch (error) {}
+    }
+  };
   const tab = createBottomTabNavigator();
   const Stack = createStackNavigator();
 
@@ -122,14 +124,18 @@ function App() {
           component={Profile}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="VideoLibrary" component={VideoLibrary} options={{ headerShown: false }}/>
+        <Stack.Screen
+          name="VideoLibrary"
+          component={VideoLibrary}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="Routes"
           component={Routes}
           options={{ headerShown: false }}
         />
-  </Stack.Navigator>
-  {/*<MainNavigator />*/}
+      </Stack.Navigator>
+      {/*<MainNavigator />*/}
     </NavigationContainer>
   );
 }

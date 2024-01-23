@@ -15,12 +15,12 @@ com.painscore.app-jetified-startup-runtime-1.0.0-13 C:\Users\DELL\.gradle\caches
 com.painscore.app-jetified-appcompat-resources-1.4.1-14 C:\Users\DELL\.gradle\caches\transforms-3\6898cafaf99f4e8aad3a0b6abcd37999\transformed\jetified-appcompat-resources-1.4.1\res
 com.painscore.app-lifecycle-viewmodel-2.3.1-15 C:\Users\DELL\.gradle\caches\transforms-3\6bf22e7603e64f3edbfd18bb46f861e6\transformed\lifecycle-viewmodel-2.3.1\res
 com.painscore.app-jetified-viewpager2-1.0.0-16 C:\Users\DELL\.gradle\caches\transforms-3\6e3f2132b5e804dc8ddd1e304b8f99fd\transformed\jetified-viewpager2-1.0.0\res
-com.painscore.app-browser-1.2.0-17 C:\Users\DELL\.gradle\caches\transforms-3\7e4dfae3d518aaa508e430ff08e6f7f3\transformed\browser-1.2.0\res
-com.painscore.app-recyclerview-1.1.0-18 C:\Users\DELL\.gradle\caches\transforms-3\819232def7ea08c26c2a409bafa9e493\transformed\recyclerview-1.1.0\res
-com.painscore.app-jetified-play-services-basement-18.1.0-19 C:\Users\DELL\.gradle\caches\transforms-3\828d15b0aed72310db25914704d5c5da\transformed\jetified-play-services-basement-18.1.0\res
-com.painscore.app-jetified-Android-ScalableVideoView-10e7b4da8b-20 C:\Users\DELL\.gradle\caches\transforms-3\8cd0ce8a03b12bd812cbcc6e3e7296ef\transformed\jetified-Android-ScalableVideoView-10e7b4da8b\res
-com.painscore.app-media-1.0.0-21 C:\Users\DELL\.gradle\caches\transforms-3\8da2f441021c317b5337b5cff7d234e5\transformed\media-1.0.0\res
-com.painscore.app-cardview-1.0.0-22 C:\Users\DELL\.gradle\caches\transforms-3\a3c8fa3470403c98ecb4b1c3a5be34f7\transformed\cardview-1.0.0\res
+com.painscore.app-jetified-exoplayer-ui-2.13.3-17 C:\Users\DELL\.gradle\caches\transforms-3\7970bca51c402b469cbc0d3604b3ba6d\transformed\jetified-exoplayer-ui-2.13.3\res
+com.painscore.app-browser-1.2.0-18 C:\Users\DELL\.gradle\caches\transforms-3\7e4dfae3d518aaa508e430ff08e6f7f3\transformed\browser-1.2.0\res
+com.painscore.app-recyclerview-1.1.0-19 C:\Users\DELL\.gradle\caches\transforms-3\819232def7ea08c26c2a409bafa9e493\transformed\recyclerview-1.1.0\res
+com.painscore.app-jetified-play-services-basement-18.1.0-20 C:\Users\DELL\.gradle\caches\transforms-3\828d15b0aed72310db25914704d5c5da\transformed\jetified-play-services-basement-18.1.0\res
+com.painscore.app-cardview-1.0.0-21 C:\Users\DELL\.gradle\caches\transforms-3\a3c8fa3470403c98ecb4b1c3a5be34f7\transformed\cardview-1.0.0\res
+com.painscore.app-media-1.2.1-22 C:\Users\DELL\.gradle\caches\transforms-3\a8a85ec3f7c1b2fe73d8e93ea625262c\transformed\media-1.2.1\res
 com.painscore.app-jetified-drawee-2.6.0-23 C:\Users\DELL\.gradle\caches\transforms-3\ab32eb12a3e3c3ea021e140a5190911a\transformed\jetified-drawee-2.6.0\res
 com.painscore.app-jetified-emoji2-views-helper-1.0.0-24 C:\Users\DELL\.gradle\caches\transforms-3\bba6db4c986c2d7e4ff4ab95f034ba17\transformed\jetified-emoji2-views-helper-1.0.0\res
 com.painscore.app-jetified-play-services-auth-20.3.0-25 C:\Users\DELL\.gradle\caches\transforms-3\c2442b219e1ea1698549405c124b116f\transformed\jetified-play-services-auth-20.3.0\res
@@ -59,6 +59,6 @@ com.painscore.app-packaged_res-57 C:\Users\DELL\Desktop\Care-Buddy\node_modules\
 com.painscore.app-packaged_res-58 C:\Users\DELL\Desktop\Care-Buddy\node_modules\react-native-screens\android\build\intermediates\packaged_res\debug
 com.painscore.app-packaged_res-59 C:\Users\DELL\Desktop\Care-Buddy\node_modules\react-native-svg\android\build\intermediates\packaged_res\debug
 com.painscore.app-packaged_res-60 C:\Users\DELL\Desktop\Care-Buddy\node_modules\react-native-vector-icons\android\build\intermediates\packaged_res\debug
-com.painscore.app-packaged_res-61 C:\Users\DELL\Desktop\Care-Buddy\node_modules\react-native-video\android\build\intermediates\packaged_res\debug
+com.painscore.app-packaged_res-61 C:\Users\DELL\Desktop\Care-Buddy\node_modules\react-native-video\android-exoplayer\build\intermediates\packaged_res\debug
 com.painscore.app-packaged_res-62 C:\Users\DELL\Desktop\Care-Buddy\node_modules\react-native-webview\android\build\intermediates\packaged_res\debug
 com.painscore.app-packaged_res-63 C:\Users\DELL\Desktop\Care-Buddy\node_modules\react-native-youtube\android\build\intermediates\packaged_res\debug

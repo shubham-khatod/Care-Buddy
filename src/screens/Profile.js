@@ -220,34 +220,34 @@ export default function Profile() {
           monthsData.push(monthAverage || 0);
         }
         const monthLabels = [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec",
+          "M1",
+          "M2",
+          "M3",
+          "M4",
+          "M5",
+          "M6",
+          "M7",
+          "M8",
+          "M9",
+          "M10",
+          "M11",
+          "M12",
         ]
           .slice(currentMonthIndex)
           .concat(
             [
-              "Jan",
-              "Feb",
-              "Mar",
-              "Apr",
-              "May",
-              "Jun",
-              "Jul",
-              "Aug",
-              "Sep",
-              "Oct",
-              "Nov",
-              "Dec",
+              "M1",
+              "M2",
+              "M3",
+              "M4",
+              "M5",
+              "M6",
+              "M7",
+              "M8",
+              "M9",
+              "M10",
+              "M11",
+              "M12",
             ].slice(0, currentMonthIndex)
           );
 
@@ -290,7 +290,7 @@ export default function Profile() {
       >
         <Text
           style={{
-            fontFamily: "Inter",
+            fontFamily: "Roboto-Regular",
             fontWeight: 500,
             color: viewMode === button.value ? "#FFFFFF" : "#484747",
           }}
@@ -509,7 +509,7 @@ const styles = StyleSheet.create({
   },
   box1: {
     // borderBottomWidth:0.4,
-    width: "40%",
+    width: 100,
     marginTop: 30,
     alignContent: "center",
     alignItems: "center",
@@ -520,20 +520,20 @@ const styles = StyleSheet.create({
   },
   txt: {
     color: "black",
-    fontFamily: "inter",
-    fontWeight: 500,
-    fontSize: 18,
+    fontFamily: "Roboto-Regular",
+
+    fontSize: 16,
   },
   titletxt: {
     color: "gray",
-    fontFamily: "inter",
+    fontFamily: "Roboto-Regular",
     fontWeight: 400,
-    fontSize: 16,
+    fontSize: 14,
   },
   txt1: {
     color: "black",
-    fontFamily: "inter",
+    fontFamily: "Roboto-Medium",
     fontWeight: 400,
-    fontSize: 20,
+    fontSize: 18,
   },
 });
